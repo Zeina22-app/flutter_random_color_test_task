@@ -1,8 +1,12 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-/// The main entry point of the application.
+/// Maximum value for an RGB color component (0–255).
+const int colorMaxValue = 256;
+/// Opacity value for a fully opaque color.
+const double opacityFull = 1.0;
+/// The main entry point of the Flutter application.
+/// It runs the app by calling [runApp] with [MyApp] as the root widget.
 void main() {
   runApp(const MyApp());
 }
@@ -24,7 +28,7 @@ class MyApp extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       // Home page of the application.
-      home: const MyHomePage(title: 'Flutter Test Task'),
+      home: const RandomColorPage(title: 'Flutter Test Task'),
     );
   }
 }
@@ -32,21 +36,21 @@ class MyApp extends StatelessWidget {
 /// A stateful widget that represents the home page of the app.
 /// Displays a text message and allows the user to change the background color
 /// by tapping anywhere on the screen.
-class MyHomePage extends StatefulWidget {
-  /// Constructor for [MyHomePage].
-  const MyHomePage({required this.title, super.key});
+class RandomColorPage extends StatefulWidget {
+  /// Constructor for [RandomColorPage].
+  const RandomColorPage({required this.title, super.key});
 
   /// Title displayed in the [AppBar].
   final String title;
   /// Creates the mutable state for this widget.
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<RandomColorPage> createState() => _RandomColorPageState();
 }
 
-/// The state for [MyHomePage].
+/// The state for [RandomColorPage].
 /// Holds the current background color and provides the logic to
 /// generate and apply a new random color when the screen is tapped.
-class _MyHomePageState extends State<MyHomePage> {
+class _RandomColorPageState extends State<RandomColorPage> {
   /// The background color of the screen. Starts with white.
   Color _backgroundColor = Colors.white;
 
@@ -54,10 +58,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void _changeBackgroundColor() {
     setState(() {
       _backgroundColor = Color.fromRGBO(
-        Random().nextInt(256), // Red component: 0–255
-        Random().nextInt(256), // Green component: 0–255
-        Random().nextInt(256), // Blue component: 0–255
-        1, // Full opacity
+        Random().nextInt(colorMaxValue), // Red component: 0–255
+        Random().nextInt(colorMaxValue), // Green component: 0–255
+        Random().nextInt(colorMaxValue), // Blue component: 0–255
+        opacityFull, // Full opacity
       );
     });
   }
