@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 
 /// Maximum value for an RGB color component (0–255).
 const int colorMaxValue = 256;
+
 /// Opacity value for a fully opaque color.
 const double opacityFull = 1.0;
+
 /// The main entry point of the Flutter application.
 /// It runs the app by calling [runApp] with [MyApp] as the root widget.
 void main() {
@@ -16,6 +18,7 @@ void main() {
 class MyApp extends StatelessWidget {
   /// Creates an instance of [MyApp], the root widget of the application.
   const MyApp({super.key});
+
   /// Builds the widget tree for [MyApp].
   /// Sets up the [MaterialApp] with the theme and the home page.
   @override
@@ -42,6 +45,7 @@ class RandomColorPage extends StatefulWidget {
 
   /// Title displayed in the [AppBar].
   final String title;
+
   /// Creates the mutable state for this widget.
   @override
   State<RandomColorPage> createState() => _RandomColorPageState();
@@ -65,12 +69,14 @@ class _RandomColorPageState extends State<RandomColorPage> {
       );
     });
   }
+
   /// Resets the background color to white.
   void _resetBackgroundColor() {
     setState(() {
       _backgroundColor = Colors.white;
     });
   }
+
   /// Describes the part of the user interface represented by this widget.
   @override
   Widget build(BuildContext context) {
@@ -99,10 +105,7 @@ class _RandomColorPageState extends State<RandomColorPage> {
               children: <Widget>[
                 Text(
                   'Hello there',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold
-                  ),
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
